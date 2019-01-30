@@ -18,7 +18,7 @@ public class AccountMapRepository implements AccountRepository{
 		Account account = json.getObjectForJSON(jsonString, Account.class);
 		accounts.put((long) accounts.size(), account);
 		return null;
-	} 
+	}
 
 	public String deleteAccount(Long id) {
 		accounts.remove(id);

@@ -1,0 +1,30 @@
+<html>
+
+<head>
+<script>
+function httpGet(theUrl)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+	
+	document.getElementById("Output").innerHTML = xmlHttp.response;
+}
+</script>
+</head>
+<body>
+<h1 id = "Output" >Output</h1>
+
+<form method="get">
+   <button type="button" onclick = "httpGet('http://35.242.137.151:4011/getAll')">Get All</button>
+
+   <button type="button" onclick = "httpGet('http://35.242.137.151:4011/getAllMeta')">Get All Meta</button>
+   
+   <button type="button" onclick = "httpGet('http://35.242.137.151:4011/CliveSmithCV.docx')">Get Spec Doc</button>
+
+   <button type="button" onclick = "httpGet('http://localhost:8181/accountapp/api/account/getAllAccounts')">Get Accounts</button>
+
+   
+   </form>
+<body>
+</html>
