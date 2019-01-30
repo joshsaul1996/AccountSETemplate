@@ -36,11 +36,11 @@ public class AccountMapRepository implements AccountRepository{
 		
 		for (Account account : accounts.values())
 		{
-			if(account.getFirstName()== firstName)
+			if(account.getFirstName().contains(firstName))
 			{nameCounter++;
 		}
 		
 	}
 		return nameCounter;
 }
-} 
+}
