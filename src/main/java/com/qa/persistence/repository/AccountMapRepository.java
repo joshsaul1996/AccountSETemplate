@@ -31,4 +31,9 @@ public class AccountMapRepository implements AccountRepository{
 		return null;
 	}
 
+	public int countForFirstName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

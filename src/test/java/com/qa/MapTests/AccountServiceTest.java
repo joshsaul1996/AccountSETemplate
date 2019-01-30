@@ -94,17 +94,17 @@ public class AccountServiceTest {
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenZeroOccurances() {
-		
+		assertEquals("The method should have returned 0 matches", 0, repository.countForFirstName());
 	}
 	
 	@Test
 	public void getCountForFirstNamesInAccountWhenOne() {
-		
+		assertEquals("The method should have returned 0 matches", 1, repository.countForFirstName());
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenMult() {
-		
+		assertEquals("The method should have returned 0 matches", 2, repository.countForFirstName());
 	}
 
 }
