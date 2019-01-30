@@ -12,8 +12,6 @@ public class JSONUtil {
 
 	public String getJSONForObject(Object obj) {
 		
-//		Jsonb jsonb = JsonbBuilder.create();
-//		String result = jsonb.toJson(dog);
 		
 		return gson.toJson(obj);
 	}

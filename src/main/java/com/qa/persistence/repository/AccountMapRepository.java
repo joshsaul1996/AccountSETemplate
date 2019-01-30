@@ -31,4 +31,16 @@ public class AccountMapRepository implements AccountRepository{
 		return null;
 	}
 
+	public int countForFirstName(String firstName) {
+		int nameCounter = 0;
+		
+		for (Account account : accounts.values())
+		{
+			if(account.getFirstName().contains(firstName))
+			{nameCounter++;
+		}
+		
+	}
+		return nameCounter;
+}
 }
