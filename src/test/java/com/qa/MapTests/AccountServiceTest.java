@@ -94,17 +94,26 @@ public class AccountServiceTest {
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenZeroOccurances() {
-		assertEquals("The method should have returned 0 matches", 0, repository.countForFirstName());
+		assertEquals("The method should have returned 0 matches", 0, repository.countForFirstName("james"));
 	}
 	
 	@Test
 	public void getCountForFirstNamesInAccountWhenOne() {
-		assertEquals("The method should have returned 0 matches", 1, repository.countForFirstName());
+		Account account = new Account("Josh", "Saul" , 22);
+		repository.createAccount(json.getJSONForObject(account));
+		repository.accounts.put((long)1,account);
+		assertEquals("The method should have returned 0 matches", 1, repository.countForFirstName("Josh"));
 	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenMult() {
-		assertEquals("The method should have returned 0 matches", 2, repository.countForFirstName());
+		Account account = new Account("Josh", "Saul" , 22);
+		repository.createAccount(json.getJSONForObject(account));
+		repository.accounts.put((long)1,account);
+		Account account2 = new Account("Josh", "Marbles" , 29);
+		repository.createAccount(json.getJSONForObject(account2));
+		repository.accounts.put((long)2,account2);
+		assertEquals("The method should have returned 0 matches", 2, repository.countForFirstName("Josh"));
 	}
 
 }
