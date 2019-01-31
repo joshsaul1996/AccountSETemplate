@@ -17,6 +17,10 @@ public class Account {
 	@Column(length =8)
 	private int accountNumber;
 	
+	public Account() {
+		
+	}
+	
 	public Account(String firstName, String lastName, int accountNumber) {
 		this.firstName = firstName;
 		this.lastName = lastName;

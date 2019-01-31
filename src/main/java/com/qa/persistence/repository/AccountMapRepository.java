@@ -1,13 +1,21 @@
 package com.qa.persistence.repository;
 
 import java.util.*;
+
+import javax.enterprise.inject.Alternative;
+import javax.inject.Inject;
+
 import com.qa.persistence.domain.Account;
 import com.qa.persistence.util.JSONUtil;
 
+@Alternative
 public class AccountMapRepository implements AccountRepository{
 	
-	public Map<Long, Account> accounts = new HashMap<>();
-	JSONUtil json = new JSONUtil();
+	@Inject
+	public Map<Long, Account> accounts;
+	
+	@Inject
+	public JSONUtil json;
 	
 	public String getAllAccounts() {
 		 return json.getJSONForObject(accounts.values());
