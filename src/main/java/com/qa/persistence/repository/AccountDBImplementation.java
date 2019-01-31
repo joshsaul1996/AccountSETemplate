@@ -39,15 +39,31 @@ public class AccountDBImplementation implements AccountRepository {
 	@Transactional(TxType.REQUIRED)
 	public String deleteAccount(Long id) {
 		TypedQuery<Account> query = eManager.createQuery("DELETE a FROM Accounts a WHERE a.id" + id, Account.class);
-		return json.getJSONForObject(query.getResultList())+"{\"Message\": \"Account successfully added\"}";
+		return json.getJSONForObject(query.getResultList())+"{\"Message\": \"Account successfully deleted\"}";
 	}
 
 	@Override
 	@Transactional(TxType.REQUIRED)
-	public String updateAccount(Long id, String account) {
-		
-		return null;
+	public String updateAccount(Long id, String jsonString) {
+		Account account= json.getObjectForJSON(jsonString, Account.class);
+		String fName = account.getFirstName();
+		String lName = account.getLastName();
+		Integer aNumber = account.getAccountNumber();
+		TypedQuery<Account> query = eManager.createQuery("UPDATE a FROM Accounts  a SET " + "firstName = :fName" + "lastName = :lName" + "accountNumber = :aNumber" + "WHERE a.id" + id, Account.class);
+		query.setParameter("firstName", fName).executeUpdate();
+		query.setParameter("lastName", lName).executeUpdate();
+		query.setParameter("accountNumber", aNumber).executeUpdate();
+		return json.getJSONForObject(query.getResultList())+"{\"Message\": \"Account successfully updated\"}";
 	}
+	
+//	@Transactional(TxType.REQUIRED)
+//	TypedQuery<Account> query = eManager.createQuery("DELETE a FROM Accounts a WHERE a.id" + id, Account.class);
+//	Account account= json.getObjectForJSON(jsonString, Account.class);
+//	eManager.persist(account);
+//	TypedQuery<Account> query = eManager.createQuery("SELECT a FROM Accounts a", Account.class);
+//	return json.getJSONForObject(query.getResultList())+"{\"Message\": \"Account successfully updated\"}";
+	
+	
 	
 	
 
